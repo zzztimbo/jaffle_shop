@@ -35,7 +35,7 @@ jobs:
             target/manifest.json
 
       - name: gsutil auth
-        uses: google-github-actions/auth@v0'
+        uses: google-github-actions/auth@v0
         with:
           credentials_json: '${{ secrets.GCS_SA_KEY }}'
 
