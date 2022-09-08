@@ -33,3 +33,10 @@ jobs:
             target/index.html
             target/catalog.json
             target/manifest.json
+
+      - name: Setup - gcloud / gsutil
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GCS_SA_KEY }}
+          project_id: ${{ secrets.GCS_PROJECT }}
+          export_default_credentials: true
