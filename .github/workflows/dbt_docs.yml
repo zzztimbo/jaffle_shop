@@ -1,0 +1,22 @@
+name: dbt-docs
+
+on:
+  push:
+
+jobs:
+  generate-dbt-docs:
+    runs-on: ubuntu-latest
+    name: generate dbt doc artifacts
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.11"
+
+      - name: Install Python dependencies
+        run: python3 -m pip install -r ./requirements.txt --user
+
+
