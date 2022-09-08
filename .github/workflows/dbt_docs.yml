@@ -23,7 +23,7 @@ jobs:
         run: python3 -m pip install -r ./requirements.txt --user
 
       - name: generate docs
-        run: dbt deps && dbt docs generate
+        run: dbt deps && dbt --profiles-dir . docs generate
 
       - name: save doc artifacts
         uses: actions/upload-artifact@v3
