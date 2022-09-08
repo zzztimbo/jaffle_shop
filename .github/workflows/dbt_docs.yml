@@ -34,12 +34,13 @@ jobs:
             target/catalog.json
             target/manifest.json
 
-      - name: Setup - gcloud / gsutil
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@v0.6.0
+      - name: gsutil auth
+        uses: google-github-actions/auth@v0'
         with:
-          service_account_key: ${{ secrets.GCS_SA_KEY }}
-          project_id: ${{ secrets.GCS_PROJECT }}
-          export_default_credentials: true
+          credentials_json: '${{ secrets.GCS_SA_KEY }}'
+
+      - name: Setup - gcloud / gsutil
+        uses: google-github-actions/setup-gcloud@v0
 
       - name: Archive existing dbt docs
         run: ./tools/bin/archive_current_dbt_docs.sh
