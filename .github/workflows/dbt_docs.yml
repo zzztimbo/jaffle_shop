@@ -19,4 +19,6 @@ jobs:
       - name: Install Python dependencies
         run: python3 -m pip install -r ./requirements.txt --user
 
+      - name: generate docs
+        run: dbt deps && dbt docs generate
 
