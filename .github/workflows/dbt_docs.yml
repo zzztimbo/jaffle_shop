@@ -3,6 +3,9 @@ name: dbt-docs
 on:
   push:
 
+env:
+  GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
+
 jobs:
   generate-dbt-docs:
     runs-on: ubuntu-latest
