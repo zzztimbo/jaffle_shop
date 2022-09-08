@@ -22,3 +22,11 @@ jobs:
       - name: generate docs
         run: dbt deps && dbt docs generate
 
+      - name: save doc artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dbt-doc-artifacts
+          path: |
+            target/index.html
+            target/catalog.json
+            target/manifest.json
