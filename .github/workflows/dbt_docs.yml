@@ -9,7 +9,7 @@ env:
 jobs:
   generate-dbt-docs:
     runs-on: ubuntu-latest
-    name: generate dbt doc artifacts
+    name: Generate dbt docs artifacts
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -58,3 +58,9 @@ jobs:
         with:
           name: dbt-doc-artifacts
 
+      - name: copy artifacts to gcs
+        run: |
+          gsutil cp index.html gs://$GCS_BUCKET/index.html 
+          gsutil cp catalog.json gs://$GCS_BUCKET/catalog.json
+          gsutil cp manifest.json gs://$GCS_BUCKET/manifest.json
+      
