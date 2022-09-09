@@ -10,6 +10,7 @@ jobs:
   generate-dbt-docs:
     runs-on: ubuntu-latest
     name: generate dbt doc artifacts
+    id: generate_dbt_doc_artifacts
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -32,7 +33,15 @@ jobs:
           path: |
             target/index.html
             target/catalog.json
-            target/manifest.json
+            target/manifest.json  
+
+  publish_dbt_docs:
+    runs-on: ubuntu-latest
+    name: Publish dbt docs
+    needs: generate_dbt_doc_artifacts
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: gsutil auth
         uses: google-github-actions/auth@v0
